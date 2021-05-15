@@ -32,6 +32,7 @@ def my_hook(d):
 
 
 ydl_opts = {
+    'geo_bypass': True,
     'format': 'bestaudio',
     'youtube_skip_dash_manifest': True,
 #     'postprocessors': [{
@@ -67,19 +68,19 @@ def download_audio(video_id, start_time, end_time, out_dir = './', overwrite=Fal
     """
     # https://unix.stackexchange.com/a/388148/378846
     out_file_name = os.path.join(out_dir, f'{video_id}_{start_time}_{end_time}.mp4')
-    
-    if overwrite and os.path.isfile(out_file_name):
+
+    if (not overwrite) and os.path.isfile(out_file_name):
         return
-    
+
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info('https://youtu.be/'+video_id, download=False)
-        
+
     url = info['url']
     start = convert_format(start_time)
     duration = convert_format(end_time-start_time)
     # ffmpeg -ss 00:00:30.00 -i "OUTPUT-OF-FIRST URL" -t 00:00:10.00 -c copy out.mp4
     subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-ss', start, '-i', url, '-ss', '0', '-t', duration, '-c', 'copy', '-strict', 'experimental', '--', out_file_name])
-    
-    
+
+
 if __name__ == '__main__':
-    download_audio('--i-y1v8Hy8', 0, 9)
+    download_audio('-Vo4CAMX26U', 0, 9)
