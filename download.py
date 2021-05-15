@@ -78,7 +78,7 @@ def download_audio(video_id, start_time, end_time, out_dir = './', overwrite=Fal
     start = convert_format(start_time)
     duration = convert_format(end_time-start_time)
     # ffmpeg -ss 00:00:30.00 -i "OUTPUT-OF-FIRST URL" -t 00:00:10.00 -c copy out.mp4
-    subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-ss', start, '-i', url, '-ss', '0', '-t', duration, '-c', 'copy', '--', out_file_name])
+    subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-ss', start, '-i', url, '-ss', '0', '-t', duration, '-c', 'copy', '-strict', 'experimental', '--', out_file_name])
     
     
 if __name__ == '__main__':
