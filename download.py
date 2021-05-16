@@ -31,7 +31,7 @@ def my_hook(d):
     if d['status'] == 'finished':
         print('Done downloading, now converting ...')
 
-
+# Link of youtube-dl options in python embedding - https://github.com/ytdl-org/youtube-dl/blob/3e4cedf9e8cd3157df2457df7274d0c842421945/youtube_dl/YoutubeDL.py#L137-L312
 ydl_opts = {
     'geo_bypass': True,
     'format': 'bestaudio',
