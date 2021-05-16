@@ -17,10 +17,11 @@ import os.path
 
 class MyLogger(object):
     def debug(self, msg):
+        #print(msg)
         pass
 
     def warning(self, msg):
-        pass
+        print(msg)
 
     def error(self, msg):
         print(msg)
@@ -66,6 +67,7 @@ def download_audio(video_id, start_time, end_time, out_dir = './', overwrite=Fal
     None.
 
     """
+
     # https://unix.stackexchange.com/a/388148/378846
     out_file_name = os.path.join(out_dir, f'{video_id}_{start_time}_{end_time}.mp4')
 
